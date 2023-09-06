@@ -5,17 +5,15 @@ from lib.ship_placement import ShipPlacement
 class Game:
     def __init__(self, rows=10, cols=10):
         self.ships_placed = []
-        self.rows = rows
-        self.cols = cols
-
-    def unplaced_ships(self):
-        return [
+        self.unplaced_ships =  [
             Ship(2),
             Ship(3),
             Ship(3),
             Ship(4),
             Ship(5),
         ]
+        self.rows = rows
+        self.cols = cols
 
     def place_ship(self, length, orientation, row, col):
         ship_placement = ShipPlacement(

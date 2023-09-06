@@ -20,7 +20,7 @@ class UserInterface:
         return self.io.readline().strip()
 
     def _ships_unplaced_message(self):
-        ship_lengths = [str(ship.length) for ship in self.game.unplaced_ships()]
+        ship_lengths = [str(ship.length) for ship in self.game.unplaced_ships]
         return ", ".join(ship_lengths)
 
     def _prompt_for_ship_placement(self):
