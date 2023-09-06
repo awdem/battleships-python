@@ -23,6 +23,9 @@ class Game:
             col=col,
         )
         self.ships_placed.append(ship_placement)
+        for ship in self.unplaced_ships:
+            if ship.length == length:
+                self.unplaced_ships.remove(ship)
 
     def ship_at(self, row, col):
         for ship_placement in self.ships_placed:
