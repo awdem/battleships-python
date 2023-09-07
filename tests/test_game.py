@@ -13,7 +13,7 @@ Initialises with five ships of length 2, 3, 3, 4, 5
 """
 def test_initialises_with_five_ships_of_right_length():
     game = Game()
-    unplaced_ships = game.unplaced_ships()
+    unplaced_ships = game.unplaced_ships
     assert len(unplaced_ships) == 5
     assert unplaced_ships[0].length == 2
     assert unplaced_ships[1].length == 3
@@ -43,3 +43,13 @@ def test_when_we_place_a_ship_then_its_place_on_the_board_is_marked_out():
     assert not game.ship_at(4, 3)
     assert not game.ship_at(3, 1)
     assert not game.ship_at(4, 1)
+
+"""
+When we place a ship
+Then it is removed from the unplaced_ships array
+"""
+def test_when_we_place_a_ship_then_its_removed_from_the_unplaced_ships_array():
+    game = Game()
+    game.place_ship(length=2, orientation="vertical", row=3, col=2)
+    unplaced_ships = game.unplaced_ships
+    assert len(unplaced_ships) == 4
