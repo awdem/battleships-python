@@ -1,9 +1,10 @@
 from lib.ship import Ship
+from lib.board import Board
 from lib.ship_placement import ShipPlacement
 
 
 class Game:
-    def __init__(self, rows=10, cols=10):
+    def __init__(self):
         self.ships_placed = []
         self.unplaced_ships =  [
             Ship(2),
@@ -12,8 +13,7 @@ class Game:
             Ship(4),
             Ship(5),
         ]
-        self.rows = rows
-        self.cols = cols
+        self.board = Board()
 
     def place_ship(self, length, orientation, row, col):
         ship_placement = ShipPlacement(

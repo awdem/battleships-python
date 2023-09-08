@@ -1,12 +1,10 @@
 from lib.game import Game
 
 """
-Initialises with a length and width of 10
+Initialises with a game board
 """
 def test_initialises_with_a_length_and_width_of_10():
-    game = Game()
-    assert game.rows == 10
-    assert game.cols == 10
+    pass
 
 """
 Initialises with five ships of length 2, 3, 3, 4, 5

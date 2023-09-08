@@ -39,9 +39,9 @@ class UserInterface:
 
     def _format_board(self):
         rows = []
-        for row in range(1, self.game.rows + 1):
+        for row in range(1, self.game.board.rows + 1):
             row_cells = []
-            for col in range(1, self.game.cols + 1):
+            for col in range(1, self.game.board.cols + 1):
                 if self.game.ship_at(row, col):
                     row_cells.append("S")
                 else:
