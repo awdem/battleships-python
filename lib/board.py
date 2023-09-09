@@ -16,7 +16,7 @@ class Board:
         for ship in self.ships:
             if ship.covers(row, col):
                 return True
-            return False
+        return False
 
     def place_ship(self, length, orientation, row, col):
         for ship in self.ships:
