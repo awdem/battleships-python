@@ -59,11 +59,11 @@ def test_when_we_place_a_ship_of_duplicate_length_then_its_parameters_change():
 
 
 """
-When we place a ship
+When we place a vertical ship
 Then its place on the board is marked out
 """
 
-def test_when_we_place_a_ship_then_its_place_on_the_board_is_marked_out():
+def test_when_we_place_a_vertical_ship_then_its_place_on_the_board_is_marked_out():
     board = Board()
     board.place_ship(length=2, orientation="vertical", row=3, col=2)
     assert board.ship_at(3, 2)
@@ -72,6 +72,22 @@ def test_when_we_place_a_ship_then_its_place_on_the_board_is_marked_out():
     assert not board.ship_at(4, 3)
     assert not board.ship_at(3, 1)
     assert not board.ship_at(4, 1)
+
+
+"""
+When we place a horizontal ship
+Then its place on the board is marked out
+"""
+
+def test_when_we_place_a_horizontal_ship_then_its_place_on_the_board_is_marked_out():
+    board = Board()
+    board.place_ship(length=2, orientation="horizontal", row=3, col=2)
+    assert board.ship_at(3, 2)
+    assert board.ship_at(3, 3)
+    assert not board.ship_at(3, 1)
+    assert not board.ship_at(3, 4)
+    assert not board.ship_at(4, 1)
+    assert not board.ship_at(2, 2)
     
     
 """
@@ -85,8 +101,8 @@ def test_returns_a_list_unplaced_ships():
 
     
 """
-When soe ships are placed
-Returns a list of only the unplaced
+When some ships are placed
+Returns a list of only the unplaced ships
 """
 
 def test_returns_a_list_unplaced_ships():
