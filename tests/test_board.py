@@ -72,3 +72,27 @@ def test_when_we_place_a_ship_then_its_place_on_the_board_is_marked_out():
     assert not board.ship_at(4, 3)
     assert not board.ship_at(3, 1)
     assert not board.ship_at(4, 1)
+    
+    
+"""
+Returns a list of unplaced ships
+"""
+
+def test_returns_a_list_unplaced_ships():
+    board = Board()
+
+    assert len(board.unplaced_ships()) == 5
+
+    
+"""
+When soe ships are placed
+Returns a list of only the unplaced
+"""
+
+def test_returns_a_list_unplaced_ships():
+    board = Board()
+    
+    board.place_ship(length=2, orientation="vertical", row=3, col=2)
+    board.place_ship(length=5, orientation="vertical", row=3, col=2)
+
+    assert len(board.unplaced_ships()) == 3

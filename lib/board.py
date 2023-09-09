@@ -25,3 +25,7 @@ class Board:
                 ship.row = row
                 ship.col = col
                 break
+    
+    def unplaced_ships(self):
+        unplaced_ships_list = [ship for ship in self.ships if ship.orientation == None]
+        return unplaced_ships_list
