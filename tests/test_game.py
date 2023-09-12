@@ -8,21 +8,21 @@ def test_initialises_with_a_player():
     assert hasattr(game, 'player')
     
 """
-When the player has unplaced ships
+When the player no placed ships
 Then it returns true
 """
 
-def test_when_player_has_unplaced_ships_it_returns_true():
+def test_when_player_has_no_placed_ships_it_returns_true():
     game = Game()
     assert game.has_unplaced_ships() == True
 
 
 """
-When the player has no unplaced ships
+When the player has placed all ships
 Then it returns false
 """
 
-def test_when_player_has_no_unplaced_ships_it_returns_false():
+def test_when_player_has_placed_all_ships_it_returns_false():
     game = Game()
     player = game.player
     position = 0
@@ -34,3 +34,18 @@ def test_when_player_has_no_unplaced_ships_it_returns_false():
         ship.col = position
     
     assert game.has_unplaced_ships() == False
+
+"""
+When the player has a mix of placed and unplaced ships
+Then it returns true
+"""
+
+def test_when_player_has_placed_some_ships_it_returns_false():
+    game = Game()
+    player = game.player
+    position = 0
+
+    player.board.place_ship(2, 'vertical', 1, 1)
+    player.board.place_ship(3, 'vertical', 4, 4)
+
+    assert game.has_unplaced_ships() == True
