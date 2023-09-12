@@ -8,5 +8,4 @@ class Game:
         for ship in self.player.board.ships:
             if ship.orientation == None:
                 return True
-            else:
-                return False
+        return False
