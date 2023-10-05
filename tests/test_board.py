@@ -1,3 +1,4 @@
+import pytest
 from lib.board import Board
 
 """
@@ -112,3 +113,28 @@ def test_returns_a_list_unplaced_ships():
     board.place_ship(length=5, orientation="vertical", row=3, col=2)
 
     assert len(board.unplaced_ships()) == 3
+
+"""
+When trying to place a ship outside of the board constraints
+Then an error is raised
+"""
+
+def test__placing_a_ship_outside_of_the_board_raises_an_error():
+    board = Board()
+    with pytest.raises(Exception) as e:
+        board.place_ship(length=2, orientation="vertical", row=1, col=1)
+    error_message = str(e.value)
+    assert error_message == "Invalid Placement: Ship outside board"
+
+"""
+When trying to place a ship on another ship
+Then an error is raised
+"""
+
+def test__placing_a_ship_on_another__ship_raises_an_error():
+    board = Board()
+    with pytest.raises(Exception) as e:
+        board.place_ship(length=2, orientation="vertical", row=4, col=4)
+        board.place_ship(length=3, orientation="vertical", row=4, col=4)
+    error_message = str(e.value)
+    assert error_message == "Invalid Placement: Ship overlapping with another ship"
