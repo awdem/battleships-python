@@ -9,11 +9,7 @@ class UserInterface:
     def run(self):
         self._welcome()
         while self.game.has_unplaced_ships():
-            self._show("You have these ships remaining: {}".format(
-                self._ships_unplaced_message()))
-            self._prompt_for_ship_placement()
-            self._show("This is your board now:")
-            self._show(self.formatter.format(self.game.player.board))
+            self._place_ships()
 
     def _show(self, message):
         self.io.write(message + "\n")
@@ -25,6 +21,13 @@ class UserInterface:
     def _prompt(self, message):
         self.io.write(message + "\n")
         return self.io.readline().strip()
+
+    def _place_ships(self):
+        self._show("You have these ships remaining: {}".format(
+                self._ships_unplaced_message()))
+        self._prompt_for_ship_placement()
+        self._show("This is your board now:")
+        self._show(self.formatter.format(self.game.player.board))
 
     def _ships_unplaced_message(self):
         ship_lengths = [str(ship.length) for ship in self.game.player.board.unplaced_ships()]
